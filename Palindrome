@@ -1,6 +1,0 @@
-name=input("Enter name:")
-rev=name[::-1]
-if(rev==name):
-  print("It is a Paliandrome")
-else:
-  print("It is not a paliandrome")
