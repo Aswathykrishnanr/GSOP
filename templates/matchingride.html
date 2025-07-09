@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Rides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #429df4, #92d1e0);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            animation: fadeIn 0.6s ease-in;
+            color: #2a2a2a;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: #ffffff;
+            margin-top: 40px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #eaf7ff;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 1100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #d6effa;
+            color: #0b3c5d;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            font-size: 15px;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f4fbff;
+            transition: background-color 0.3s ease;
+        }
+
+        .no-rides {
+            text-align: center;
+            padding: 30px;
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* Light desktop-level responsiveness only */
+        @media (max-width: 992px) {
+            .container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Rides</h1>
+    <h2>Welcome, {{ username }}</h2>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Via</th>
+                    <th>Date & Time</th>
+                    <th>Seats</th>
+                    <th>Rider</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if rides %}
+                    {% for ride in rides %}
+                    <tr>
+                        <td>{{ ride[2] }}</td>
+                        <td>{{ ride[3] }}</td>
+                        <td>{{ ride[4] }}</td>
+                        <td>{{ ride[5] }}</td>
+                        <td>{{ ride[6] }}</td>
+                        <td>{{ ride[8] }} {{ ride[9] }}</td>
+                        <td>{{ ride[7] }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="no-rides">No rides found matching your criteria.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

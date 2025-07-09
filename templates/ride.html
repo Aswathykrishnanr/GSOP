@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Rides</title>
+</head>
+<body>
+    <h1>Available Rides</h1>
+    <h2>Welcome, {{ username }}</h2>
+    <table>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Via</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Available Seats</th>
+            <th>Rider Name</th>
+            <th>Contact Number</th>
+        </tr>
+        {% for ride in rides %}
+        <tr>
+            <td>{{ ride[2] }}</td> <!-- origin -->
+            <td>{{ ride[3] }}</td> <!-- destination -->
+            <td>{{ ride[4] }}</td> <!-- via -->
+            <td>{{ ride[5] }}</td> <!-- departure -->
+            <td>{{ ride[6] }}</td> <!-- available_seats -->
+            <td>{{ ride[7] }} {{ ride[8] }}</td> <!-- rider's name -->
+            <td>{{ ride[9] }}</td> <!-- rider's contact number -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
